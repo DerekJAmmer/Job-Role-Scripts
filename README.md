@@ -8,10 +8,6 @@ Practical, job-ready PowerShell + Python scripts across IT and security roles. B
 - State-changing actions gated behind `-WhatIf` (PS) / `--dry-run` (Py)
 - No credentials in source — env vars or `SecretManagement` only
 
-**Roadmap:** see [PORTFOLIO_PLAN.md](PORTFOLIO_PLAN.md)
-
----
-
 ## Table of Contents
 
 - [SecurityAnalyst](#securityanalyst) — blue-team / SOC tooling
@@ -74,9 +70,3 @@ CIS, DISA STIG, and NIST 800-53 audit tooling. 293 Pester + pytest tests across 
 | Inventory | [Get-SoftwareInventoryCVE](Compliance/Inventory/Get-SoftwareInventoryCVE) | Installed software with known-CVE lookup |
 | Reporting | [Test-NIST80017Mapping](Compliance/Reporting/Test-NIST80017Mapping) | NIST 800-171 control mapping |
 
----
-
-## CI
-
-- PowerShell — PSScriptAnalyzer + Pester (`.github/workflows/powershell.yml`, windows-latest)
-- Python — ruff + pytest (`.github/workflows/python.yml`, ubuntu-latest)

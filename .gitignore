@@ -40,3 +40,12 @@ TestResults.xml
 
 # Internal working notes
 autopilot-task-list.md
+
+# Project-internal / dev tooling (not for public repo)
+CLAUDE.md
+PORTFOLIO_PLAN.md
+.editorconfig
+.gitattributes
+PSScriptAnalyzerSettings.psd1
+pyproject.toml
+.github/
