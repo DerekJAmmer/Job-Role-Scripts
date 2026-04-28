@@ -1,0 +1,33 @@
+From: Bank Support <support@bank.com>
+Return-Path: <evil@attacker.tld>
+Reply-To: support@another-domain.tld
+Subject: Urgent: Your account has been compromised
+Date: Tue, 22 Apr 2026 08:15:00 +0000
+Message-ID: <x9k2fraud@attacker.tld>
+To: victim@yourcompany.com
+Authentication-Results: mx.yourcompany.com; spf=fail smtp.mailfrom=attacker.tld; dkim=fail header.d=attacker.tld; dmarc=fail action=reject header.from=bank.com
+Received: from mail.attacker.tld (mail.attacker.tld [198.51.100.42]) by mx.yourcompany.com with ESMTP id abc; Tue, 22 Apr 2026 08:15:01 +0000
+Received: from localhost (localhost [127.0.0.1]) by mail.attacker.tld with ESMTP id xyz; Tue, 22 Apr 2026 08:14:59 +0000
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============boundary42=="
+
+--===============boundary42==
+Content-Type: text/plain; charset=utf-8
+
+Dear Valued Customer,
+
+Your account requires immediate verification. Click here to verify:
+https://bit.ly/x9k2 or visit https://bit.ly/verify-now
+
+Failure to verify within 24 hours will result in account suspension.
+
+Bank Support Team
+
+--===============boundary42==
+Content-Type: application/vnd.ms-word.document.macroEnabled.12
+Content-Disposition: attachment; filename="invoice.docm"
+Content-Transfer-Encoding: base64
+
+UEsDBCBmYWtlIGRvY20=
+
+--===============boundary42==--

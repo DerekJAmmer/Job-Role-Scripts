@@ -1,0 +1,131 @@
+{
+  "name": "CIS Microsoft Windows 11 Enterprise Benchmark v2.0.0 (subset)",
+  "version": "2026-04-subset",
+  "_comment": "Portfolio demonstration subset. Not a complete CIS-CAT replacement. Controls span RegistryValue, AuditPolicy, ServiceState, SecurityPolicy, and Manual types.",
+  "controls": [
+    {
+      "id": "1.1.1",
+      "title": "Ensure 'Enforce password history' is set to '24 or more password(s)'",
+      "section": "Account Policies",
+      "type": "SecurityPolicy",
+      "expected": { "Setting": "Length of password history maintained", "Value": "24" },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > Account Policies > Password Policy > Enforce password history = 24"
+    },
+    {
+      "id": "1.1.2",
+      "title": "Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'",
+      "section": "Account Policies",
+      "type": "SecurityPolicy",
+      "expected": { "Setting": "Maximum password age (days)", "Value": "365" },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > Account Policies > Password Policy > Maximum password age = 365 or fewer (not 0)"
+    },
+    {
+      "id": "2.3.1.1",
+      "title": "Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'",
+      "section": "Security Options",
+      "type": "RegistryValue",
+      "expected": {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+        "Name": "NoConnectedUser",
+        "Value": 3,
+        "ValueType": "DWord"
+      },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > Local Policies > Security Options > Accounts: Block Microsoft accounts = Users can't add or log on with Microsoft accounts"
+    },
+    {
+      "id": "2.3.7.1",
+      "title": "Ensure 'Interactive logon: Do not require CTRL+ALT+DEL' is set to 'Disabled'",
+      "section": "Security Options",
+      "type": "RegistryValue",
+      "expected": {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+        "Name": "DisableCAD",
+        "Value": 0,
+        "ValueType": "DWord"
+      },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > Local Policies > Security Options > Interactive logon: Do not require CTRL+ALT+DEL = Disabled"
+    },
+    {
+      "id": "2.3.10.5",
+      "title": "Ensure 'Network access: Restrict anonymous access to Named Pipes and Shares' is set to 'Enabled'",
+      "section": "Security Options",
+      "type": "RegistryValue",
+      "expected": {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+        "Name": "RestrictNullSessAccess",
+        "Value": 1,
+        "ValueType": "DWord"
+      },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > Local Policies > Security Options > Network access: Restrict anonymous access to Named Pipes and Shares = Enabled"
+    },
+    {
+      "id": "2.3.11.5",
+      "title": "Ensure 'Microsoft network server: Digitally sign communications (always)' is set to 'Enabled'",
+      "section": "Security Options",
+      "type": "RegistryValue",
+      "expected": {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+        "Name": "RequireSecuritySignature",
+        "Value": 1,
+        "ValueType": "DWord"
+      },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > Local Policies > Security Options > Microsoft network server: Digitally sign communications (always) = Enabled"
+    },
+    {
+      "id": "5.10",
+      "title": "Ensure 'Bluetooth Audio Gateway Service (BTAGService)' is set to 'Disabled'",
+      "section": "System Services",
+      "type": "ServiceState",
+      "expected": { "Name": "BTAGService", "StartType": "Disabled" },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > System Services > Bluetooth Audio Gateway Service = Disabled"
+    },
+    {
+      "id": "5.11",
+      "title": "Ensure 'Bluetooth Support Service (bthserv)' is set to 'Disabled'",
+      "section": "System Services",
+      "type": "ServiceState",
+      "expected": { "Name": "bthserv", "StartType": "Disabled" },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > System Services > Bluetooth Support Service = Disabled"
+    },
+    {
+      "id": "17.1.1",
+      "title": "Ensure 'Audit Credential Validation' is set to 'Success and Failure'",
+      "section": "Advanced Audit Policy",
+      "type": "AuditPolicy",
+      "expected": { "Subcategory": "Credential Validation", "Setting": "Success and Failure" },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > Advanced Audit Policy Configuration > Account Logon > Audit Credential Validation = Success and Failure"
+    },
+    {
+      "id": "17.5.1",
+      "title": "Ensure 'Audit Account Lockout' is set to 'Failure'",
+      "section": "Advanced Audit Policy",
+      "type": "AuditPolicy",
+      "expected": { "Subcategory": "Account Lockout", "Setting": "Failure" },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > Advanced Audit Policy Configuration > Logon/Logoff > Audit Account Lockout = Failure"
+    },
+    {
+      "id": "17.7.1",
+      "title": "Ensure 'Audit Audit Policy Change' is set to 'Success'",
+      "section": "Advanced Audit Policy",
+      "type": "AuditPolicy",
+      "expected": { "Subcategory": "Audit Policy Change", "Setting": "Success" },
+      "remediation": "Computer Configuration > Windows Settings > Security Settings > Advanced Audit Policy Configuration > Policy Change > Audit Audit Policy Change = Success"
+    },
+    {
+      "id": "18.9.47.2",
+      "title": "Ensure 'Configure Attack Surface Reduction rules' is set to 'Enabled'",
+      "section": "Administrative Templates",
+      "type": "Manual",
+      "expected": null,
+      "remediation": "Computer Configuration > Administrative Templates > Windows Components > Microsoft Defender Antivirus > Microsoft Defender Exploit Guard > Attack Surface Reduction > Configure Attack Surface Reduction rules = Enabled. Manual verification required — rule GUIDs must be reviewed per environment."
+    },
+    {
+      "id": "18.3.2",
+      "title": "Ensure LAPS (Local Administrator Password Solution) is installed and configured",
+      "section": "Administrative Templates",
+      "type": "Manual",
+      "expected": null,
+      "remediation": "Install Microsoft LAPS or Windows LAPS (built-in on Windows 11 22H2+) and configure via Group Policy: Computer Configuration > Administrative Templates > System > LAPS. Manual verification required — check that the AdmPwd or LAPS policy is applied and passwords are rotating."
+    }
+  ]
+}

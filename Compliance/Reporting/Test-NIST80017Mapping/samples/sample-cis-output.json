@@ -1,0 +1,79 @@
+[
+  {
+    "ControlId": "1.1.1",
+    "Title": "Ensure 'Enforce password history' is set to '24 or more password(s)'",
+    "Section": "Account Policies",
+    "Type": "SecurityPolicy",
+    "Status": "Compliant",
+    "Expected": "24",
+    "Actual": "24",
+    "Reason": "Value matches expected.",
+    "Remediation": "Computer Configuration > Windows Settings > Security Settings > Account Policies > Password Policy > Enforce password history = 24"
+  },
+  {
+    "ControlId": "1.1.2",
+    "Title": "Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'",
+    "Section": "Account Policies",
+    "Type": "SecurityPolicy",
+    "Status": "NonCompliant",
+    "Expected": "365",
+    "Actual": "0",
+    "Reason": "Value is 0 (password never expires), which is not permitted.",
+    "Remediation": "Set Maximum password age to 365 or fewer days (not 0)."
+  },
+  {
+    "ControlId": "2.3.1.1",
+    "Title": "Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'",
+    "Section": "Security Options",
+    "Type": "RegistryValue",
+    "Status": "Compliant",
+    "Expected": "3",
+    "Actual": "3",
+    "Reason": "Registry value matches expected.",
+    "Remediation": "N/A"
+  },
+  {
+    "ControlId": "2.3.7.1",
+    "Title": "Ensure 'Interactive logon: Do not require CTRL+ALT+DEL' is set to 'Disabled'",
+    "Section": "Security Options",
+    "Type": "RegistryValue",
+    "Status": "NonCompliant",
+    "Expected": "0",
+    "Actual": "1",
+    "Reason": "DisableCAD is set to 1 (CTRL+ALT+DEL not required).",
+    "Remediation": "Set DisableCAD registry value to 0."
+  },
+  {
+    "ControlId": "17.1.1",
+    "Title": "Ensure 'Audit Credential Validation' is set to 'Success and Failure'",
+    "Section": "Advanced Audit Policy",
+    "Type": "AuditPolicy",
+    "Status": "Compliant",
+    "Expected": "Success and Failure",
+    "Actual": "Success and Failure",
+    "Reason": "Audit policy matches expected.",
+    "Remediation": "N/A"
+  },
+  {
+    "ControlId": "18.9.47.2",
+    "Title": "Ensure 'Configure Attack Surface Reduction rules' is set to 'Enabled'",
+    "Section": "Administrative Templates",
+    "Type": "Manual",
+    "Status": "Manual",
+    "Expected": null,
+    "Actual": null,
+    "Reason": "Manual check required — ASR rule GUIDs must be reviewed per environment.",
+    "Remediation": "Enable ASR rules via Group Policy and verify GUIDs are appropriate for the environment."
+  },
+  {
+    "ControlId": "SUMMARY",
+    "Title": "Summary Row",
+    "Section": "SUMMARY",
+    "Type": "Summary",
+    "Status": "Compliant:3 NonCompliant:2 Manual:1",
+    "Expected": null,
+    "Actual": null,
+    "Reason": "Aggregate summary.",
+    "Remediation": ""
+  }
+]

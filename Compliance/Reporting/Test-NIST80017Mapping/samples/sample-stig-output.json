@@ -1,0 +1,79 @@
+[
+  {
+    "VulnId": "V-253256",
+    "Title": "The SMBv1 protocol must be disabled on the SMB client",
+    "Severity": "CAT I",
+    "Type": "RegistryValue",
+    "Status": "NotAFinding",
+    "Expected": "4",
+    "Actual": "4",
+    "Reason": "Registry value matches expected.",
+    "Fix": "Set HKLM:\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10 'Start' DWORD to 4."
+  },
+  {
+    "VulnId": "V-253257",
+    "Title": "The SMBv1 protocol must be disabled on the SMB server",
+    "Severity": "CAT I",
+    "Type": "RegistryValue",
+    "Status": "Open",
+    "Expected": "0",
+    "Actual": "1",
+    "Reason": "SMB1 is still enabled on the server.",
+    "Fix": "Set SMB1 registry value to 0 or run Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force."
+  },
+  {
+    "VulnId": "V-253265",
+    "Title": "Local Security Authority (LSA) Protection must be enabled",
+    "Severity": "CAT II",
+    "Type": "RegistryValue",
+    "Status": "NotAFinding",
+    "Expected": "1",
+    "Actual": "1",
+    "Reason": "LSA protection is enabled.",
+    "Fix": "N/A"
+  },
+  {
+    "VulnId": "V-253428",
+    "Title": "Microsoft Defender Antivirus real-time protection must be enabled",
+    "Severity": "CAT II",
+    "Type": "RegistryValue",
+    "Status": "NotAFinding",
+    "Expected": "0",
+    "Actual": "0",
+    "Reason": "Real-time monitoring is not disabled.",
+    "Fix": "N/A"
+  },
+  {
+    "VulnId": "V-253466",
+    "Title": "PowerShell Script Block Logging must be enabled",
+    "Severity": "CAT III",
+    "Type": "RegistryValue",
+    "Status": "Open",
+    "Expected": "1",
+    "Actual": "0",
+    "Reason": "Script block logging is not enabled.",
+    "Fix": "Enable via GPO: Turn on PowerShell Script Block Logging = Enabled."
+  },
+  {
+    "VulnId": "V-253505",
+    "Title": "AppLocker policy must be configured and reviewed to control application execution",
+    "Severity": "CAT II",
+    "Type": "Manual",
+    "Status": "Manual",
+    "Expected": null,
+    "Actual": null,
+    "Reason": "Manual review required — AppLocker rule sets vary by environment.",
+    "Fix": "Review and configure AppLocker policies."
+  },
+  {
+    "VulnId": "SUMMARY",
+    "Title": "Summary Row",
+    "Severity": "",
+    "Type": "Summary",
+    "Status": "NotAFinding:3 Open:2 Manual:1",
+    "Expected": null,
+    "Actual": null,
+    "Reason": "Aggregate summary.",
+    "Fix": ""
+  }
+]

@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / credentials (never commit)
+*.pfx
+*.key
+*.pem
+.env
+.env.*
+!.env.example
+
+# Build / output
+dist/
+build/
+*.log
+*.tmp
+
+# Local AI tooling / IDE
+.claude/
+
+# Test result artifacts
+testResults.xml
+TestResults.xml
+
+# Internal working notes
+autopilot-task-list.md

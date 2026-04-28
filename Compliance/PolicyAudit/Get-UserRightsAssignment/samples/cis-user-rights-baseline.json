@@ -1,0 +1,15 @@
+{
+  "_comment": "CIS Microsoft Windows 11 v3.0 user-rights assignment baseline (section 2.2.x). ExpectedAccounts use friendly NTAccount names as returned by SID resolution.",
+  "privileges": [
+    { "Privilege": "SeDebugPrivilege",                "ExpectedAccounts": ["BUILTIN\\Administrators"] },
+    { "Privilege": "SeBackupPrivilege",               "ExpectedAccounts": ["BUILTIN\\Administrators", "BUILTIN\\Backup Operators"] },
+    { "Privilege": "SeRestorePrivilege",              "ExpectedAccounts": ["BUILTIN\\Administrators", "BUILTIN\\Backup Operators"] },
+    { "Privilege": "SeRemoteShutdownPrivilege",       "ExpectedAccounts": ["BUILTIN\\Administrators"] },
+    { "Privilege": "SeAssignPrimaryTokenPrivilege",   "ExpectedAccounts": ["NT AUTHORITY\\LOCAL SERVICE", "NT AUTHORITY\\NETWORK SERVICE"] },
+    { "Privilege": "SeImpersonatePrivilege",          "ExpectedAccounts": ["BUILTIN\\Administrators", "NT AUTHORITY\\SERVICE", "NT AUTHORITY\\LOCAL SERVICE", "NT AUTHORITY\\NETWORK SERVICE"] },
+    { "Privilege": "SeLoadDriverPrivilege",           "ExpectedAccounts": ["BUILTIN\\Administrators"] },
+    { "Privilege": "SeShutdownPrivilege",             "ExpectedAccounts": ["BUILTIN\\Administrators", "BUILTIN\\Users"] },
+    { "Privilege": "SeTakeOwnershipPrivilege",        "ExpectedAccounts": ["BUILTIN\\Administrators"] },
+    { "Privilege": "SeManageVolumePrivilege",         "ExpectedAccounts": ["BUILTIN\\Administrators"] }
+  ]
+}

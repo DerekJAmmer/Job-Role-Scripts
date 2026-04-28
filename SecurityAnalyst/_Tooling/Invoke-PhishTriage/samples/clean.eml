@@ -1,0 +1,18 @@
+From: Real Sender <legit@example.com>
+Return-Path: <legit@example.com>
+Reply-To: legit@example.com
+Subject: Quarterly update
+Date: Mon, 21 Apr 2026 10:00:00 +0000
+Message-ID: <abc123@example.com>
+To: user@yourcompany.com
+Authentication-Results: mx.yourcompany.com; spf=pass smtp.mailfrom=example.com; dkim=pass header.d=example.com; dmarc=pass action=none header.from=example.com
+Received: from mx.example.com (mx.example.com [192.0.2.10]) by mx.yourcompany.com with ESMTPS id xyz; Mon, 21 Apr 2026 10:00:01 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Hi team,
+
+Just sending the quarterly update. See https://example.com/report for details.
+
+Thanks,
+Real Sender

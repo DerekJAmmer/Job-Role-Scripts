@@ -1,0 +1,4 @@
+GivenName,Surname,SamAccountName,UserPrincipalName,OU,Groups,Department,Title
+Alice,Smith,asmith,asmith@corp.local,"OU=Staff,DC=corp,DC=local",HelpDesk;VPN-Users,IT,Support Analyst
+Bob,Jones,bjones,bjones@corp.local,"OU=Finance,DC=corp,DC=local",Finance-Users,Finance,Accountant
+Carol,White,cwhite,cwhite@corp.local,,Contractors,Operations,Contractor

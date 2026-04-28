@@ -1,0 +1,144 @@
+{
+  "name": "DISA STIG Microsoft Windows 11 V1R6 (subset)",
+  "version": "2026-04-subset",
+  "_comment": "Portfolio demonstration subset. Not a complete STIG-Viewer or Evaluate-STIG replacement. Controls span RegistryValue, AuditPolicy, ServiceState, SecurityPolicy, BitLockerStatus, and Manual types.",
+  "controls": [
+    {
+      "vulnId": "V-253256",
+      "title": "The SMBv1 protocol must be disabled on the SMB client",
+      "severity": "CAT I",
+      "type": "RegistryValue",
+      "expected": {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10",
+        "Name": "Start",
+        "Value": 4,
+        "ValueType": "DWord"
+      },
+      "fix": "Set HKLM:\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10 'Start' DWORD to 4 (Disabled) or disable the SMBv1 Client feature via: Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol-Client"
+    },
+    {
+      "vulnId": "V-253257",
+      "title": "The SMBv1 protocol must be disabled on the SMB server",
+      "severity": "CAT I",
+      "type": "RegistryValue",
+      "expected": {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+        "Name": "SMB1",
+        "Value": 0,
+        "ValueType": "DWord"
+      },
+      "fix": "Set HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters 'SMB1' DWORD to 0, or run: Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force"
+    },
+    {
+      "vulnId": "V-253265",
+      "title": "Local Security Authority (LSA) Protection must be enabled",
+      "severity": "CAT II",
+      "type": "RegistryValue",
+      "expected": {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+        "Name": "RunAsPPL",
+        "Value": 1,
+        "ValueType": "DWord"
+      },
+      "fix": "Set HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa 'RunAsPPL' DWORD to 1 via Group Policy: Computer Configuration > Windows Settings > Security Settings > Local Policies > Security Options > LSA Protection = Enabled"
+    },
+    {
+      "vulnId": "V-253428",
+      "title": "Microsoft Defender Antivirus real-time protection must be enabled",
+      "severity": "CAT II",
+      "type": "RegistryValue",
+      "expected": {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection",
+        "Name": "DisableRealtimeMonitoring",
+        "Value": 0,
+        "ValueType": "DWord"
+      },
+      "fix": "Set HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection 'DisableRealtimeMonitoring' DWORD to 0 via GPO: Computer Configuration > Administrative Templates > Windows Components > Microsoft Defender Antivirus > Real-time Protection > Turn off real-time protection = Disabled"
+    },
+    {
+      "vulnId": "V-253466",
+      "title": "PowerShell Script Block Logging must be enabled",
+      "severity": "CAT III",
+      "type": "RegistryValue",
+      "expected": {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging",
+        "Name": "EnableScriptBlockLogging",
+        "Value": 1,
+        "ValueType": "DWord"
+      },
+      "fix": "Set HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging 'EnableScriptBlockLogging' DWORD to 1 via GPO: Computer Configuration > Administrative Templates > Windows Components > Windows PowerShell > Turn on PowerShell Script Block Logging = Enabled"
+    },
+    {
+      "vulnId": "V-253283",
+      "title": "The account lockout threshold must be configured to three or fewer invalid logon attempts",
+      "severity": "CAT II",
+      "type": "SecurityPolicy",
+      "expected": {
+        "Setting": "Lockout threshold",
+        "Value": "3",
+        "Operator": "LessThanOrEqual"
+      },
+      "fix": "Computer Configuration > Windows Settings > Security Settings > Account Policies > Account Lockout Policy > Account lockout threshold = 3 or fewer invalid logon attempts"
+    },
+    {
+      "vulnId": "V-253386",
+      "title": "Audit Credential Validation must be configured to audit both Success and Failure events",
+      "severity": "CAT II",
+      "type": "AuditPolicy",
+      "expected": {
+        "Subcategory": "Credential Validation",
+        "Setting": "Success and Failure"
+      },
+      "fix": "Computer Configuration > Windows Settings > Security Settings > Advanced Audit Policy Configuration > Account Logon > Audit Credential Validation = Success and Failure"
+    },
+    {
+      "vulnId": "V-253399",
+      "title": "Audit Account Lockout must be configured to audit both Success and Failure events",
+      "severity": "CAT III",
+      "type": "AuditPolicy",
+      "expected": {
+        "Subcategory": "Account Lockout",
+        "Setting": "Success and Failure"
+      },
+      "fix": "Computer Configuration > Windows Settings > Security Settings > Advanced Audit Policy Configuration > Logon/Logoff > Audit Account Lockout = Success and Failure"
+    },
+    {
+      "vulnId": "V-253260",
+      "title": "The Telnet Client must not be installed",
+      "severity": "CAT III",
+      "type": "ServiceState",
+      "expected": {
+        "Name": "TlntSvr",
+        "NotPresent": true
+      },
+      "fix": "Uninstall the Telnet Client feature: Disable-WindowsOptionalFeature -Online -FeatureName TelnetClient -NoRestart"
+    },
+    {
+      "vulnId": "V-253474",
+      "title": "BitLocker Drive Encryption must be enabled on the system drive",
+      "severity": "CAT II",
+      "type": "BitLockerStatus",
+      "expected": {
+        "MountPoint": "C:",
+        "Required": true
+      },
+      "fix": "Enable BitLocker on the system drive: Enable-BitLocker -MountPoint 'C:' -EncryptionMethod XtsAes256 -UsedSpaceOnly and configure a recovery key or TPM protector per site policy. This check assumes drive encryption is required by organisational policy."
+    },
+    {
+      "vulnId": "V-253505",
+      "title": "AppLocker policy must be configured and reviewed to control application execution",
+      "severity": "CAT II",
+      "type": "Manual",
+      "expected": null,
+      "fix": "Review and configure AppLocker policies via Computer Configuration > Windows Settings > Security Settings > Application Control Policies > AppLocker. Ensure Executable Rules, Windows Installer Rules, Script Rules, and Packaged App Rules are defined and enforced. Manual review required — rule sets vary by environment."
+    },
+    {
+      "vulnId": "V-253506",
+      "title": "Software inventory must be reviewed at least annually to remove unauthorised software",
+      "severity": "CAT III",
+      "type": "Manual",
+      "expected": null,
+      "fix": "Perform an annual (or more frequent) review of installed software using: Get-Package, Get-WmiObject Win32_Product, or a software asset management tool. Remove or document any software not explicitly authorised by the organisation. Manual review required."
+    }
+  ]
+}

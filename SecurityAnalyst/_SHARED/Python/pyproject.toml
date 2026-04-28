@@ -1,0 +1,14 @@
+[project]
+name = "sa_common"
+version = "0.1.0"
+description = "Shared helpers for SecurityAnalyst role Python scripts."
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sa_common*"]

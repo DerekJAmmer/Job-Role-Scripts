@@ -1,0 +1,11 @@
+{
+  "name": "DC-Standard-2022",
+  "features": [
+    "AD-Domain-Services",
+    "DNS",
+    "RSAT-AD-Tools",
+    "RSAT-DNS-Server",
+    "RSAT-ADDS-Tools"
+  ],
+  "software": []
+}

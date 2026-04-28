@@ -1,0 +1,13 @@
+[project]
+name = "invoke_phish_triage"
+version = "0.1.0"
+description = "Triage suspicious .eml files: headers, URLs, attachments, red flags."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

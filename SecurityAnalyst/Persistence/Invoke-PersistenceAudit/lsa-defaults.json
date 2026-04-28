@@ -1,0 +1,15 @@
+{
+  "_comment": "Default LSA package names treated as benign by Get-PALSAPackages. Externalized to keep AMSI-flagged literals out of the .ps1.",
+  "knownDefaults": [
+    "msv1_0",
+    "schannel",
+    "wdigest",
+    "tspkg",
+    "pku2u",
+    "livessp",
+    "kerberos",
+    "negoexts",
+    "cloudap",
+    ""
+  ]
+}

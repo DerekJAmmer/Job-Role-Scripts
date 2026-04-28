@@ -1,0 +1,13 @@
+[project]
+name = "get_ioc_intel"
+version = "0.1.0"
+description = "Enrich IOCs against VirusTotal, AbuseIPDB, and AlienVault OTX."
+requires-python = ">=3.10"
+dependencies = ["requests>=2.31"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "responses>=0.25", "ruff>=0.5"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

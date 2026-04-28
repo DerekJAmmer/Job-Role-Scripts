@@ -1,0 +1,10 @@
+{
+  "_comment": "CIS Benchmark for Windows 11 — password policy baseline (controls 1.1.1–1.1.5, 1.2.1–1.2.2)",
+  "MinLength": 14,
+  "ComplexityEnabled": true,
+  "HistoryCount": 24,
+  "MaxAgeDays": 60,
+  "MinAgeDays": 1,
+  "LockoutThreshold": 5,
+  "LockoutDurationMinutes": 15
+}
